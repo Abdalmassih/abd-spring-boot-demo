@@ -2,9 +2,22 @@ package com.abdalmassih;
 
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "customers")
 public class Customer {
-    private int id;
-    private int age;
+    @Id
+    @SequenceGenerator(name = "customer_id_sequence", sequenceName = "customer_id_sequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_id_sequence")
+    private Integer id;
+
+    private Integer age;
     private String name;
     private String mail;
 
